@@ -1,5 +1,5 @@
-police = list("パトカー")
-taxi = list("タクシー")
+police = "パトカー"
+taxi = "タクシー"
 print("".join(map("".join, zip(police,taxi))))
 
 # other

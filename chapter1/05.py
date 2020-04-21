@@ -1,6 +1,10 @@
 def n_gram(target, n):
     # 基準を1文字(単語)ずつずらしながらn文字分抜き出す
-    return ["".join((target[i + j] for j in range(n))) for i in range(len(target) - n + 1)]
+    res = []
+    for i in range(len(target) - n + 1):
+        res.append("".join([target[i + j] for j in range(n)]))
+    return res
+
 
 Sentence = "I am an NLPer"
 Words = Sentence.split()
