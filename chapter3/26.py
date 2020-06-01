@@ -7,7 +7,16 @@ basic_info_template_pattern = r'''
     ^\}\}$              # 基礎情報の終了
     '''
 
-def get_basic_info_dict():
+def get_basic_info_dict():    
+    """
+    入力ファイルから基礎情報を辞書型にしてその辞書を返す    
+
+    Returns
+    -------
+    basic_info_dict : dict[str, str]
+        ファイルからkeyとvalueを切り取ってその辞書を返す
+    """ 
+    
     # 格納する辞書の定義
     basic_info_dict = {}
 
@@ -35,7 +44,7 @@ def _26():
     basic_info_dict = get_basic_info_dict()
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"'(')+", "", value)
+        basic_info_dict[key] = re.sub(r"''+", "", value)
     
     for key, value in basic_info_dict.items():
         print(key,":", value)

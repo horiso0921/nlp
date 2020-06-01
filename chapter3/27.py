@@ -1,6 +1,6 @@
 import re
 
-input_f_name = "contents.txt" # 入力ファイルの名前
+INPUT_F_NAME = "contents.txt" # 入力ファイルの名前
 basic_info_template_pattern = r'''
     ^\{\{基礎情報.*\n    # 基礎情報の先頭
     (.*\n)*?            # 基礎情報の中身を非貪欲
@@ -9,11 +9,19 @@ basic_info_template_pattern = r'''
 internal_link_pattern = r"\[\[([^]]+)\]\]"
 
 def get_basic_info_dict():
+    """
+    入力ファイルから基礎情報を辞書型にしてその辞書を返す    
+
+    Returns
+    -------
+    basic_info_dict : dict[str, str]
+        ファイルからkeyとvalueを切り取ってその辞書を返す
+    """
     # 格納する辞書の定義
     basic_info_dict = {}
 
     # 入力ファイルの読み込み
-    with open(input_f_name, encoding="utf-8") as target:
+    with open(INPUT_F_NAME, encoding="utf-8") as target:
         
         # 行をまたがって認識する必要があるのでreadを使う
         text = target.read()    
@@ -32,11 +40,26 @@ def get_basic_info_dict():
     return basic_info_dict
 
 def delete_emphasis_markup(basic_info_dict):
+    """
+    基礎情報の強調マークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_emphasis_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から強調マークアップを削除した辞書
+    """
+
+    deleted_emphasis_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"'(')+", "", value)
+        deleted_emphasis_markup_basic_info_dict[key] = re.sub(r"'(')+", "", value)
 
-    return basic_info_dict
+    return deleted_emphasis_markup_basic_info_dict
 
 def _27():
 

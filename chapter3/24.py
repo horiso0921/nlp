@@ -2,7 +2,7 @@ import re
 
 input_f_name = "contents.txt"
 output_f_name = "out24.txt"
-pattern = r"\[\[File:([^\|]*)"
+pattern = r"\[\[(?:File|ファイル):([^\|]*)"
 
 def _24():
     with open(input_f_name, encoding="utf-8") as target:

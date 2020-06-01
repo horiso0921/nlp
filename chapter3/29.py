@@ -8,6 +8,11 @@ basic_info_template_pattern = r'''
     ^\}\}$              # 基礎情報の終了
     '''
 
+
+"""
+https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg
+"""
+
 def get_basic_info_dict():
     # 格納する辞書の定義
     basic_info_dict = {}
@@ -32,79 +37,275 @@ def get_basic_info_dict():
     return basic_info_dict
 
 def delete_emphasis(basic_info_dict):
+    """
+    基礎情報の強調マークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_emphasis_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から強調マークアップを削除した辞書
+    """
+
+    deleted_emphasis_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"'(')+", "", value)
+        deleted_emphasis_markup_basic_info_dict[key] = re.sub(r"''+", "", value)
 
-    return basic_info_dict
+    return deleted_emphasis_markup_basic_info_dict
 
 
 def delete_internal_links(basic_info_dict):
+    """
+    基礎情報の内部リンクマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_internal_link_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から内部リンクマークアップを削除した辞書
+    """
+
+    deleted_internal_link_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"\[\[(?!ファイル:|Category:)([^\]]+\|)?([^\|]+?)\]\]", r"\2", value)
+        deleted_internal_link_markup_basic_info_dict[key] = re.sub(r"\[\[(?!ファイル:|Category:)([^\]]+\|)?([^\|]+?)\]\]", r"\2", value)
 
-    return basic_info_dict
+    return deleted_internal_link_markup_basic_info_dict
 
 def delete_files(basic_info_dict):
-    
-    for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"\[\[ファイル:([^\]|]+).*?\]\]", r"\1", value)
+    """
+    基礎情報のファイルマークアップを削除
 
-    return basic_info_dict
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_file_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文からファイルマークアップを削除した辞書
+    """
+
+    deleted_file_markup_basic_info_dict = {}
+
+    for key, value in basic_info_dict.items():
+        deleted_file_markup_basic_info_dict[key] = re.sub(r"\[\[ファイル:([^\]|]+).*?\]\]", r"\1", value)
+
+    return deleted_file_markup_basic_info_dict
 
 def delete_external_links(basic_info_dict):
+    """
+    基礎情報の外部リンクマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_external_link_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から外部リンクマークアップを削除した辞書
+    """
+
+    deleted_external_link_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"\[([^\]\s]+?\s)?([^\]]+)\]", r"\2", value)
+        deleted_external_link_markup_basic_info_dict[key] = re.sub(r"\[([^\]\s]+?\s)?([^\]]+)\]", r"\2", value)
 
-    return basic_info_dict
+    return deleted_external_link_markup_basic_info_dict
 
 def delete_categories(basic_info_dict):
+    """
+    基礎情報のカテゴリマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_categories_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文からカテゴリマークアップを削除した辞書
+    """
+
+    deleted_categories_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"\[\[Category:([^\]|]+).*?\]\]", r"\1", value)
+        deleted_categories_markup_basic_info_dict[key] = re.sub(r"\[\[Category:([^\]|]+).*?\]\]", r"\1", value)
 
-    return basic_info_dict
+    return deleted_categories_markup_basic_info_dict
 
 def delete_redirects(basic_info_dict):
+    """
+    基礎情報のリダイレクトマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_redirect_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文からリダイレクトマークアップを削除した辞書
+    """
+
+    deleted_redirect_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"#REDIRECT \[\[([^\]]+)\]\]", r"\1", value)
+        deleted_redirect_markup_basic_info_dict[key] = re.sub(r"#REDIRECT \[\[([^\]]+)\]\]", r"\1", value)
 
-    return basic_info_dict
+    return deleted_redirect_markup_basic_info_dict
 
 def delete_comments(basic_info_dict):
+    """
+    基礎情報のコメントアウトのマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_comment_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文からリダイレクトマークアップを削除した辞書
+    """
+
+    deleted_comment_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"<!-- [.\s]+ -->", "", value)
+        deleted_comment_markup_basic_info_dict[key] = re.sub(r"<!-- [.\s]+ -->", "", value)
 
-    return basic_info_dict
+    return deleted_comment_markup_basic_info_dict
 
 def delete_unordered_lists(basic_info_dict):
+    """
+    基礎情報の箇条書きのマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_unordered_list_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から箇条書きのマークアップを削除した辞書
+    """
+
+    deleted_unordered_list_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"^\*+(.+)", r"\1", value,re.MULTILINE)
+        
+        deleted_unordered_list_markup_basic_info_dict[key] = re.sub(r"\n\*+", "\n", value, re.MULTILINE)
 
-    return basic_info_dict
+    return deleted_unordered_list_markup_basic_info_dict
     
 def delete_ordered_lists(basic_info_dict):
+    """
+    基礎情報の番号付き箇条書きのマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_ordered_list_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から番号付き箇条書きのマークアップを削除した辞書
+    """
+
+    deleted_ordered_list_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"^#+(.+)", r"\1", value,re.MULTILINE)
+        deleted_ordered_list_markup_basic_info_dict[key] = re.sub(r"^#+(.+)", r"\1", value,re.MULTILINE)
 
-    return basic_info_dict
+    return deleted_ordered_list_markup_basic_info_dict
 
 def delete_define_lists(basic_info_dict):
+    """
+    基礎情報の定義の箇条書きのマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_define_list_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から定義の箇条書きのマークアップを削除した辞書
+    """
+
+    deleted_define_list_markup_basic_info_dict = {}
 
     for key, value in basic_info_dict.items():
-        basic_info_dict[key] = re.sub(r"^(:|;)(.+)", r"\1", value,re.MULTILINE)
+        deleted_define_list_markup_basic_info_dict[key] = re.sub(r"^(:|;)(.+)", r"\1", value,re.MULTILINE)
 
-    return basic_info_dict
+    return deleted_define_list_markup_basic_info_dict
+
+
+def delete_ref(basic_info_dict):
+    """
+    基礎情報の定義の注釈のマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
     
+    Returns
+    -------
+    deleted_ref_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から注釈のマークアップを削除した辞書
+    """
+
+    deleted_ref_markup_basic_info_dict = {}
+
+    for key, value in basic_info_dict.items():
+        deleted_ref_markup_basic_info_dict[key] = re.sub(r"<.+?>", "", value)
+
+    return deleted_ref_markup_basic_info_dict
+    
+
+def delete_lang(basic_info_dict):
+    """
+    基礎情報のlangのマークアップを削除
+
+    Parameters
+    ----------
+    basic_info_dict : dict[str, str]
+        基礎情報を格納した辞書
+    
+    Returns
+    -------
+    deleted_lang_markup_basic_info_dict : dict[str, str]
+        基礎情報の本文から注釈のマークアップを削除した辞書
+    """
+
+    deleted_lang_markup_basic_info_dict = {}
+
+    for key, value in basic_info_dict.items():
+        deleted_lang_markup_basic_info_dict[key] = re.sub(r"\{\{lang(?:[^|]*?\|)*?([^|]*?)\}\}", r"\1", value, re.MULTILINE)
+
+    return deleted_lang_markup_basic_info_dict
 
 def extract_basic_info(basic_info_dict):
-    
+
     basic_info_dict = delete_emphasis(basic_info_dict)
     basic_info_dict = delete_internal_links(basic_info_dict)
     basic_info_dict = delete_files(basic_info_dict)
@@ -116,6 +317,8 @@ def extract_basic_info(basic_info_dict):
     basic_info_dict = delete_ordered_lists(basic_info_dict)
     basic_info_dict = delete_unordered_lists(basic_info_dict)
     basic_info_dict = delete_define_lists(basic_info_dict)
+    basic_info_dict = delete_ref(basic_info_dict)
+    basic_info_dict = delete_lang(basic_info_dict)
 
     return basic_info_dict
 
@@ -141,8 +344,11 @@ def _29():
     R = S.get(url=URL, params=PARAMS)
     DATA = R.json()
     
+    print(DATA)
+
     PAGES = DATA["query"]["pages"]
 
+    print(PAGES)
     IMAGEINFO = list(PAGES.values())[0]["imageinfo"]
 
     print(IMAGEINFO[0]["url"])
