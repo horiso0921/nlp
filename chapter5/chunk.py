@@ -4,7 +4,7 @@ class Chunk(object):
     
     __slots__ = ["morphs", "dst", "srcs"]
 
-    def __init__(self, dst):
+    def __init__(self, dst: int):
     
         self.morphs = []
         self.dst = dst
@@ -13,10 +13,10 @@ class Chunk(object):
     def chunkcontents(self):
         return "{} {} {}".format("".join(map(lambda x: x.surface, self.morphs)), self.dst, self.srcs)
 
-    def append_srcs(self, src):
+    def append_srcs(self, src: int):
         self.srcs.append(src)
 
-    def append_morphs(self, morph):
+    def append_morphs(self, morph: Morph):
         self.morphs.append(morph)
 
 
