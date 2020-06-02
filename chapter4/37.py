@@ -53,7 +53,6 @@ def _37():
     items = sorted(words.items(), key=lambda x: -x[1])
     words = items
 
-    # 頻度上位10語の取得
     size = 10
     list_word = words[:size]
     print(list_word)
@@ -64,42 +63,20 @@ def _37():
     counts = list_zipped[1]
 
     # グラフで使うフォント情報(デフォルトのままでは日本語が表示できない)
-    fp = FontProperties(
-        fname="C:\\Windows\\Fonts\\meiryo.ttc"
-    )
+    fp = FontProperties(fname="C:\\Windows\\Fonts\\meiryo.ttc")
 
     # 棒グラフのデータ指定
-    plt.bar(
-        range(0, size),		# x軸の値（0,1,2...9）
-        counts,				# それに対応するy軸の値
-        align='center'		# x軸における棒グラフの表示位置
-    )
+    plt.bar(range(0, size),counts,align='center')
 
     # x軸のラベルの指定
-    plt.xticks(
-        range(0, size),		# x軸の値（0,1,2...9）
-        words,				# それに対応するラベル
-        fontproperties=fp	# 使うフォント情報
-    )
+    plt.xticks(range(0, size),words,fontproperties=fp)
 
-    # x軸の値の範囲の調整
-    plt.xlim(
-        xmin=-1, xmax=size	# -1〜10（左右に1の余裕を持たせて見栄え良く）
-    )
 
     # グラフのタイトル、ラベル指定
-    plt.title(
-        '37. 頻度上位10語',	# タイトル
-        fontproperties=fp	# 使うフォント情報
-    )
-    plt.xlabel(
-        '出現頻度が高い10語',# x軸ラベル
-        fontproperties=fp	# 使うフォント情報
-    )
-    plt.ylabel(
-        '出現頻度',			# y軸ラベル
-        fontproperties=fp	# 使うフォント情報
-    )
+    plt.title('37',fontproperties=fp)
+
+    plt.xlabel('出現頻度高い10語',fontproperties=fp)
+    plt.ylabel('出現頻度',fontproperties=fp)
 
     # グリッドを表示
     plt.grid(axis='y')

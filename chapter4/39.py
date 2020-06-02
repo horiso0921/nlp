@@ -54,16 +54,11 @@ def _39():
     counts = list(map(lambda x: x[1], items))
 
     # グラフで使うフォント情報(デフォルトのままでは日本語が表示できない)
-    fp = FontProperties(
-        fname="C:\\Windows\\Fonts\\meiryo.ttc"
-    )
+    fp = FontProperties(fname="C:\\Windows\\Fonts\\meiryo.ttc")
 
 
     # 散布図のデータ指定
-    plt.scatter(
-        range(1, len(counts) + 1),	# x軸：順位
-        counts						# y軸：出現頻度
-    )
+    plt.scatter(range(1, len(counts) + 1),counts)
 
     # 軸の値の範囲の調整
     plt.xlim(1, len(counts) + 1)

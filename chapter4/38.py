@@ -51,19 +51,13 @@ def _38():
 
     # baseがうまく認識しないから*になってるものが多いよ...
     items = sorted(words.items(), key=lambda x: -x[1])
-    counts = list(map(lambda x: x[1], items
+    counts = list(map(lambda x: x[1], items))
 
     # グラフで使うフォント情報(デフォルトのままでは日本語が表示できない)
-    fp = FontProperties(
-        fname="C:\\Windows\\Fonts\\meiryo.ttc"
-    )
+    fp = FontProperties(fname="C:\\Windows\\Fonts\\meiryo.ttc")
 
     # ヒストグラムのデータ指定
-    plt.hist(
-        counts,				# データのリスト
-        bins=20,			# ビンの数
-        range=(1, 20)       # 値の範囲
-    )		
+    plt.hist(counts,bins=20,range=(1, 20))		
 
     # x軸の値の範囲の調整
     plt.xlim(xmin=1, xmax=20)
