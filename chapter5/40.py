@@ -48,6 +48,10 @@ if __name__ == "__main__":
     _40()
 
 """
+cabocha -f1 neko.txt -o neko.txt.cabocha
+"""
+
+"""
 surface : 名前 , base : 名前 , pos : 名詞 , pos1 : 一般
 surface : は , base : は , pos : 助詞 , pos1 : 係助詞
 surface : まだ , base : まだ , pos : 副詞 , pos1 : 助詞類接続
