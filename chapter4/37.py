@@ -10,7 +10,7 @@ def _37():
     words = defaultdict(int)
     for line in morpheme_dict_lists:
         for word in line:
-            if word["pos"] not in  "記号":
+            if word["pos"] !=  "記号":
                 words[word["base"]] += 1
     
 

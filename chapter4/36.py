@@ -14,8 +14,7 @@ def _36():
 
     # baseがうまく認識しないと*になってるよ...
     items = sorted(words.items(), key=lambda x: -x[1])
-    words = list(map(lambda x: x[0], items))
-    print(words[:30])
+    print(items[:30])
 
 if __name__ == "__main__":
     _36()

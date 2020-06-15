@@ -15,8 +15,7 @@ def _38():
     
 
     # baseがうまく認識しないから*になってるものが多いよ...
-    items = sorted(words.items(), key=lambda x: -x[1])
-    counts = list(map(lambda x: x[1], items))
+    counts = words.values()
 
     # ヒストグラムのデータ指定
     plt.hist(counts,bins=20,range=(1, 20))		
