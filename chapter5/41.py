@@ -42,9 +42,9 @@ def _41():
 
             # 文末かどうか
             elif line == "EOS" or line == "":
-                # 文末ならその分における文節は定義済み
+                # 文末ならその文における文節は定義済み
                 # ある文節(index=i)のdstに対して有向辺i→dstは張れているので逆辺dst→iを張る
-                # この辺についてはscrsで管理する
+                # この辺についてはchunks[dst]のcrsで管理する
                 for i, chunk in enumerate(chunks):
                     dst = chunk.dst
                     if dst != -1:
