@@ -15,7 +15,7 @@ def _57():
             # 句点除去 
             if dep.get('type') != 'punct':
 
-                govr = dep.find('./governor')
+                govr = dep.find('./governor')   
                 dept = dep.find('./dependent')
                 edges.append(((govr.get('idx'), govr.text), (dept.get('idx'), dept.text)))
             

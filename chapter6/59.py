@@ -48,8 +48,8 @@ def _59():
     root = ET.parse("nlp.txt.xml")
 
     for sentence in root.iterfind("./document/sentences/sentence/parse"):
-        ans.append(" === Sentence Changed === ")
         parser(sentence.text)
+        ans.append(" === Sentence Changed === ")
     print("\n".join(ans))
 
 if __name__ == "__main__":
