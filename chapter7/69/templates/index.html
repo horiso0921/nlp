@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>アーティストの情報を調べます</h1>
+    <form action = "/searched" method = "POST" class=form>
+        <h2>アーティスト名</h2>
+            <div class="cp_iptxt">
+                <input class="ef" type="text" name="artist_name" size="100" minlength="3" maxlength="1000"　required placeholder="SMAP">
+                <label>名前</label>
+                <span class="focus_line"></span>
+            </div>
+        <h2>アーティストの別名</h2>
+            <div class="cp_iptxt">
+                <input type="text" class="ef" name="alias" size="100" minlength="3" maxlength="1000"　required placeholder="スマップ">
+                <label>別名</label>
+                <span class="focus_line"></span>
+            </div>
+        <h2>タグ</h2>
+            <div class="cp_iptxt">
+                <input type="text" name="tag" class="ef" size="100" minlength="3" maxlength="1000"　required placeholder="pop">
+                <label>タグ</label>
+                <span class="focus_line"></span>
+            </div>
+            <p>タグの例:</p> 
+                <ul>
+                    <li>punk</li>
+                    <li>production music</li>
+                    <li>likedis auto</li>
+                </ul>
+        <div class="input_wrap"><input class="button" type="submit" value="検索！"></div>
+    </form>
+{% endblock %}

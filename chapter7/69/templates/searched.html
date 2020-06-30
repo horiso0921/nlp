@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>検索結果</h1>
+    <h2> {% for c in clue %}
+        |{{c}}|
+        {% endfor %} の検索結果
+    </h2>
+    {%- set i = [1] -%}
+    {% if a > 10:%}
+        <div>件数が多いので10件だけ表示します</div>
+    {%endif%}
+    {% for doc in r %}
+        <hr />
+        <ul>
+        <p>{{i[-1]}}件目 / {{a}}件中</p>
+        <li><p>[アーティト名] {{doc["name"]}}</p></li>
+        <li><p>[別名] {{doc["aliases"]}}</p></li>
+        <li><p>[tag] 
+            {% for d in doc["tags"] %}
+                {{d["value"]}}
+                ({{d["count"]}})
+            {% endfor %}
+        </p></li>
+        <li><p>[活動開始日] {{doc["begin"]}}</p></li>
+        </ul>
+        {%- set _ = i.append(i[-1]+1) -%}
+    {% endfor %}
+{% endblock %}

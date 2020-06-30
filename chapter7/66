@@ -1,0 +1,4 @@
+> use testdb
+switched to db testdb
+> db.getCollection("artist").find({'area': 'Japan'}).count()
+22821
