@@ -61,6 +61,6 @@ def searched():
     print(form_contents,clue)
     return render_template("searched.html", r=res,clue=cl.values(), a=total)
 
-## おまじない
+
 if __name__ == "__main__":
     app.run(port=8080, debug=True)

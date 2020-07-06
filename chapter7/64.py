@@ -23,10 +23,10 @@ def _64():
 
         collection.insert_many(docs)
         
-        collection.create_index([('name', pymongo.ASCENDING)])  
-        collection.create_index([('aliases.name', pymongo.ASCENDING)])  
-        collection.create_index([('tags.value', pymongo.ASCENDING)])
-        collection.create_index([('rating.value', pymongo.ASCENDING)])
+        collection.create_index("name")  
+        collection.create_index("aliases.name")  
+        collection.create_index("tags.value")
+        collection.create_index("rating.value")
         print(len(docs))
 
 if __name__ == "__main__":
