@@ -1,16 +1,11 @@
 import pickle
 from collections import defaultdict
 from scipy import io
-fname_t_func = "t_func"
+fname_t_func = "t_index"
 out_fname = "86_out"
 def _86():
     with open(fname_t_func, "rb") as f_data:
-        t_func = pickle.load(f_data)
-
-    t_index = defaultdict(int)
-
-    for t_i, t in enumerate(t_func.keys()):
-        t_index[t] = t_i
+        t_index = pickle.load(f_data)
 
     matrix = io.loadmat("85")["matrix"]
     with open(out_fname,"w") as out_target:

@@ -6,7 +6,7 @@ from scipy import sparse, io
 fname_tc_func = "tc_func"
 fname_t_func = "t_func"
 fname_c_func = "c_func"
-
+fname_t_index = "t_index"
 def _84():
 
     with open(fname_t_func, "rb") as f_data:
@@ -36,6 +36,9 @@ def _84():
             matrix[t_index[t], c_index[c]] = clc_ppmi(t, c, f_tc)
 
     io.savemat("matrix", {"matrix": matrix})
+
+    with open(fname_t_index, "wb") as target:
+        pickle.dump(t_index, target)
 
 if __name__ == "__main__":
     _84()
