@@ -1,13 +1,15 @@
 import pickle
 from collections import defaultdict
-from scipy import io
+import numpy as np
 fname_t_func = "t_index"
 out_fname = "86_out"
 def _86():
     with open(fname_t_func, "rb") as f_data:
         t_index = pickle.load(f_data)
 
-    matrix = io.loadmat("85")["matrix"]
+    matrix = np.load("matrix.npy")
+
+    print(matrix[10])
     with open(out_fname,"w") as out_target:
         print(matrix[t_index["United_States"]], file=out_target)
 

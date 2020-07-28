@@ -8,7 +8,7 @@ def _87():
     with open(fname_t_func, "rb") as f_data:
         t_index = pickle.load(f_data)
 
-    matrix = io.loadmat("85")["matrix"]
+    matrix = np.load("matrix.npy")
     United_States_matrix = matrix[t_index["United_States"]]
     US_matrix = matrix[t_index["U.S"]]
     nolm = np.linalg.norm(United_States_matrix) * np.linalg.norm(US_matrix)
@@ -18,5 +18,5 @@ if __name__ == "__main__":
     _87()
 
 """
-0.830735671132707
+0.8230089436712562
 """

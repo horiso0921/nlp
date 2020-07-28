@@ -1,4 +1,5 @@
 from scipy import sparse, io
+import numpy as np
 # decomposition.TruncatedSVDが疎行列に対応しているらしい
 from sklearn.decomposition import TruncatedSVD
 def _85():
@@ -7,7 +8,7 @@ def _85():
     m = TruncatedSVD(300)
     matrix = m.fit_transform(matrix)
     print(matrix.shape)
-    io.savemat("85", {"matrix": matrix})
+    np.save("matrix", matrix)
 
 
 if __name__ == "__main__":

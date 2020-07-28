@@ -1,4 +1,4 @@
-fname = "enwiki-20150112-400-r100-10576.txt"
+fname = "enwiki-20150112-400-r10-105752.txt"
 out_fname = "80_out"
 
 def _80():
