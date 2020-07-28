@@ -1,6 +1,5 @@
 import pickle
 from collections import defaultdict
-from scipy import io
 import numpy as np
 fname_t_func = "t_index"
 out_fname = "87_out"
