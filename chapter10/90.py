@@ -12,7 +12,7 @@ def make_matrix():
     sentences = word2vec.Text8Corpus('81_out')
 
     model = word2vec.Word2Vec(sentences, size=300, min_count=1, window=15)
-    model.save("model")
+    model.save("model_m1_win15")
 
 def run_86(model):
     print(model.wv["United_States"])
@@ -39,7 +39,7 @@ def _90():
 
 
 if __name__ == "__main__":
-    _90()
+    make_matrix()
 
 """
 86
