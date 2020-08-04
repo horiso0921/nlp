@@ -16,7 +16,7 @@ def _98():
         ward = ward(matries)
         print(ward)
 
-        fig, ax = plt.subplots(1, 1, figsize=(100,50))
+        fig, ax = plt.subplots(1, 1, figsize=(10,20))
         ax.set_title('Hierarchical Clustering Dendrogram')
         ax.set_xlabel('distance')
         ax.set_ylabel('country')
@@ -25,7 +25,7 @@ def _98():
             orientation='left',
             leaf_rotation=0., 
             labels=countries, 
-            leaf_font_size=8) 
+            leaf_font_size=4) 
         ax.yaxis.set_label_position('right')
         fig.savefig('98.png',dpi=320, format='png', bbox_inches='tight') 
         
