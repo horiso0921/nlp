@@ -1,4 +1,5 @@
 from gensim.models import word2vec
+from scipy.stats import spearmanr
 import csv
 lis_fname = ["94.csv","94_85.csv"]
 
@@ -8,7 +9,8 @@ def spearman(fname):
 
         reader = csv.reader(target)
         l = [row for row in reader]
-        scores = [[float(row[2]), float(row[3])] for row in l]
+        scores1 = [float(row[2]) for row in l]
+        scores2 = [float(row[3]) for row in l]
 
         scores.sort()
         for i in range(len(scores)):

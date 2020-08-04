@@ -17,12 +17,16 @@ def _99():
 
         t_sne = TSNE().fit_transform(matries)
 
+        predicts = KMeans(n_clusters=5).fit_predict(matries)
+
         fig, ax = plt.subplots(figsize=(10,10))
-        ax.set_title('TSNE')
+        ax.set_title("TSNE")
         
+        cmap = plt.get_cmap("brg")
         for i, label in enumerate(countries):
-            ax.scatter(t_sne[i, 0], t_sne[i, 1])
-            ax.annotate(label, xy=(t_sne[i, 0], t_sne[i, 1]),fontsize=5)
+            cval = cmap(predicts[i] / 4)
+            ax.scatter(t_sne[i, 0], t_sne[i, 1], color=cval)
+            ax.annotate(label, xy=(t_sne[i, 0], t_sne[i, 1]),fontsize=5, color=cval)
 
         fig.savefig('99.png',dpi=320, format='png', bbox_inches='tight') 
         
