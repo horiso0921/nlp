@@ -15,7 +15,7 @@ def _99():
             matries = np.vstack([matries, matrix])
             countries.append(word)
 
-        t_sne = TSNE(perplexity=30, learning_rate=500).fit_transform(matries)
+        t_sne = TSNE().fit_transform(matries)
 
         fig, ax = plt.subplots(figsize=(10,10))
         ax.set_title('TSNE')
